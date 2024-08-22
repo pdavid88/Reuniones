@@ -1,25 +1,22 @@
 package es.springboot.reuniones.services;
 
+import es.springboot.reuniones.data.PersonaRepository;
 import es.springboot.reuniones.models.Persona;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class PersonaService {
 
-    private static final List<Persona> personas = new ArrayList<>();
+    private final PersonaRepository personaRepository;
 
-    static {
-        for (int i = 0; i < 5; i ++) {
-            Persona persona = new Persona(i, "Nombre " + i, "Apellido " + i);
-            personas.add(persona);
-        }
+    public PersonaService(PersonaRepository personaRepository) {
+        this.personaRepository = personaRepository;
     }
 
     public List<Persona> getAllPersonas() {
-        return personas;
+        return personaRepository.findAll();
     }
 
 }

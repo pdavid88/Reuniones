@@ -1,17 +1,27 @@
 package es.springboot.reuniones.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="persona")
 public class Persona {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nombre;
-    private String apellido;
+    private String apellidos;
 
     public Persona() {
     }
 
-    public Persona(long id, String nombre, String apellido) {
+    public Persona(long id, String nombre, String apellidos) {
         this.id = id;
         this.nombre = nombre;
-        this.apellido = apellido;
+        this.apellidos = apellidos;
     }
 
     public long getId() {
@@ -30,11 +40,11 @@ public class Persona {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 }
